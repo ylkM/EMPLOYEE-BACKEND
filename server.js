@@ -10,7 +10,7 @@ app.listen(PORT, (req,res)=>{
 
 //mongoose.connect(process.env.MONGODB_URL)
 mongoose
-.connect("mongodb+srv://   ylkmngst7:mDBATBSMCTEC4As@cluster0.ocm5rli.mongodb.net/?retryWrites=true&w=majority")
+.connect(process.env.MONGODB_UR)
 .then (()=>{
   console.log("mongodb is connected successfully ")
   app.listen(PORT,(req,res)=>{
