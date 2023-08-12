@@ -1,4 +1,4 @@
-const router =require("express").Router
+const router = require("express").Router()
 const { query, json } = require("express")
 const EmployeeModel =require("../models/employee")
 /*employee registration*/

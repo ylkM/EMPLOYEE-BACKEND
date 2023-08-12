@@ -1,24 +1,25 @@
-const express = require("express")
-const mongoose =require("mongoose")
-require("dotenv").config()
-const app =express()
-const PORT =process.env.PORT||7000
-const employeeRouter =require("./routes/employee")
-app.listen(PORT, (req,res)=>{
-  console.log((`server is listening on:http://localhost:${PORT}`))
-})
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const app = express();
+const PORT = process.env.PORT || 5000;
+const employeeRouter = require("./routes/employee");
 
+app.listen(  () => {
+  console.log(`server is listening on:http://localhost:${PORT}`);
+});
+// testing prettier
 //mongoose.connect(process.env.MONGODB_URL)
+
 mongoose
-.connect(process.env.MONGODB_UR)
-.then (()=>{
-  console.log("mongodb is connected successfully ")
-  app.listen(PORT,(req,res)=>{
-    console.log((`server is listening on :${PORT}`))
-  }).catch((error)=>{
-    console.log(error)
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("mongodb is connected successfully ");
   })
-})
- // middleware
- app.use(express.json())
- app.use("/api/employees", employeeRouter)
+  .catch((error) => {
+    console.log(error);
+  });
+
+// middleware
+app.use(express.json());
+app.use("/api/employees", employeeRouter);
