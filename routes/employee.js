@@ -10,10 +10,10 @@ const newEmployee = new EmployeeModel({
   name :req.body.name,
   occupation: req.body.occupation,
   callOffice : req.body.callOffice,
-  CallMobile : req.body.CallMobile,
+  callMobile : req.body.callMobile,
   email : req.body.email,
   sms: req.body.sms,
-  //userImage : req.body.userImage,
+  imageURL : req.body.userImage,
   // saving the employee info in to mongodb database 
   })
   try{
@@ -45,6 +45,14 @@ router.get("/:id", async(req,res)=>{
  
 })
 /*delete an employee*/
+router.delete("/:id", async(req,res)=>{
+  try{
+    await newEmployee.findByIDAndDelete({_id:req.params.id})
+    res.status(200).json("item is deleted successfully")
+  }catch(error){
+    res.status(500).json("error")
+  }
+})
 
 /*update an employee info*/
 router.put("/:id", async(req,res)=>{

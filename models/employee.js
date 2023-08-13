@@ -1,8 +1,9 @@
 
 const mongoose =require("mongoose")
 // create schema
-const EmployeeSchema = new mongoose.Schema({
-  Image_URL:{
+const EmployeeSchema = new mongoose.Schema(
+  {
+  imageURL:{
     type:String,
     required: false,
   },
@@ -10,23 +11,23 @@ const EmployeeSchema = new mongoose.Schema({
     type:String,
     required: [true, "PLEASE ENTER YOUR NAME"]
   },
-  Occupation:{
+  occupation:{
     type:String,
     required: true,
   },
-  CellMobile:{
+  cellMobile:{
     type:String,
     required: true,
   },
-  CellOffice:{
+  cellOffice:{
     type:String,
     required: true,
   },
-  CellSms:{
+  sms:{
     type:String,
-    required: true,
+    required: false,
   },
-   Email:{
+   email:{
     type:String,
     required: true,
   },
@@ -37,8 +38,9 @@ const EmployeeSchema = new mongoose.Schema({
     createdAT :"created at",
     updatedAt :"updated at"
   }
-})
+}
+)
  // creating model (EmployeeModel)and exporting it 
- const EmployeeModel =mongoose.model("EmployeeModel", EmployeeSchema)
- module.exports = EmployeeModel
+ module.exports =mongoose.model("EmployeeModel", EmployeeSchema)
+ //EmployeeModel = the name of model 
 
