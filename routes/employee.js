@@ -1,69 +1,15 @@
-const router = require("express").Router()
-const { query, json } = require("express")
-const EmployeeModel =require("../models/employee")
+const express = require("express")
+const router =express.Router()
+const {employeePostReq, getAllEmployees, singleEmp,updateEmp,deleteEmp} =require("../controllers/employeeController")
 /*employee registration*/
 /*
 name, occupation, image, callOffice, callMobile, email, sms
 */
-router.post("/employee",async(req,res)=>{
-const newEmployee = new EmployeeModel({
-  name :req.body.name,
-  occupation: req.body.occupation,
-  callOffice : req.body.callOffice,
-  callMobile : req.body.callMobile,
-  email : req.body.email,
-  sms: req.body.sms,
-  imageURL : req.body.userImage,
-  // saving the employee info in to mongodb database 
-  })
-  try{
-    const savedEmployeeInfo =await newEmployee.save()
-    res.status(200).json(savedEmployeeInfo)
-  } catch(err){
-    res.status(500).json(err)
-  }
-})
-/*getting all employees*/
-router.get("/employees", async(req,res)=>{
- try{
-  const getAllEmployee =await EmployeeModel.find({})
-  res.status(200).json(getAllEmployee)
- }catch(error){
-  res.status(500).json(error)
- }
-})
+router.post("/employee", employeePostReq)// POST REQ
 
-/*getting one employee*/
-router.get("/:id", async(req,res)=>{
-  try {
-    const getSingleEmployee =await EmployeeModel.findById(req.params.id)
-    res.status(200).json(getSingleEmployee)
-  }catch(error){
-    res.status(500).json(error)
-  }
+router.get("/employees", getAllEmployees) //get all employee
+router.get("/:id", singleEmp) /*getting one employee*/
+router.put("/:id", updateEmp)/*update an employee info*/
+router.delete("/:id", deleteEmp)/*delete an employee*/
 
- 
-})
-/*delete an employee*/
-router.delete("/:id", async(req,res)=>{
-  try{
-    await newEmployee.findByIDAndDelete({_id:req.params.id})
-    res.status(200).json("item is deleted successfully")
-  }catch(error){
-    res.status(500).json("error")
-  }
-})
-
-/*update an employee info*/
-router.put("/:id", async(req,res)=>{
-  try{
-   const query ={_id:req.params.id}
-   const updatedEmployee =await EmployeeModel.findByIdAndUpdate(query, 
-    {$set:req.body},
-    {new:true})
-   res.status(200).json(updatedEmployee)
-  }catch(error){
-     res.status(500).error(json)
-  }
-})
-module.exports= router // then import / required it inside server.js to display the out put 
+module.exports= router // export router to server.js 
