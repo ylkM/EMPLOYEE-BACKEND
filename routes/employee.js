@@ -1,6 +1,6 @@
 const express = require("express")
 const router =express.Router()
-const {employeePostReq, getAllEmployees, singleEmp,updateEmp,deleteEmp} =require("../controllers/employeeController")
+const {employeePostReq, getAllEmployees, singleEmp,updateEmp,deleteEmp} = require("../controllers/employeeController")
 /*employee registration*/
 /*
 name, occupation, image, callOffice, callMobile, email, sms

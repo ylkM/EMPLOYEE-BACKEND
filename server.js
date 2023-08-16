@@ -2,11 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT =  3000;
 const employeeRouter = require("./routes/employee");
-const errorMiddleWare =require("./middleware/errorMiddleWare")
+// const errorMiddleWare =require("./middleware/errorMiddleWare")
 
-app.listen(  () => {
+app.listen( PORT, () => {
   console.log(`server is listening on:http://localhost:${PORT}`);
 });
 
@@ -24,5 +24,5 @@ mongoose
 // middleware
 app.use(express.json());
 app.use("/api/employees", employeeRouter);
-app.use(errorMiddleWare)
+// app.use(errorMiddleWare)
 

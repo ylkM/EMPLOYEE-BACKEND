@@ -7,19 +7,19 @@ const employeePostReq = asyncHandler(async (req, res) => {
   const newEmployee = new EmployeeModel({
     name: req.body.name,
     occupation: req.body.occupation,
-    callOffice: req.body.callOffice,
-    callMobile: req.body.callMobile,
+    cellOffice: req.body.cellOffice,
+    cellMobile: req.body.cellMobile,
     email: req.body.email,
     sms: req.body.sms,
-    imageURL: req.body.userImage,
+    imageURL: req.body.imageURL,
     // saving the employee info in to mongodb database
   });
   try {
     const savedEmployeeInfo = await newEmployee.save();
     res.status(200).json(savedEmployeeInfo);
-  } catch (error) {
+  } catch (err) {
     res.status(500);
-    throw new error(error.message);
+    console.log(err)
   }
 });
 /*getting all employees*/
