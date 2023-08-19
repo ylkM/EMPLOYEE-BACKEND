@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT =  3000;
 const employeeRouter = require("./routes/employee");
+const cors =require("cors")
 // const errorMiddleWare =require("./middleware/errorMiddleWare")
 
 app.listen( PORT, () => {
@@ -23,6 +24,7 @@ mongoose
 
 // middleware
 app.use(express.json());
+app.use(cors());
 app.use("/api/employees", employeeRouter);
 // app.use(errorMiddleWare)
 
