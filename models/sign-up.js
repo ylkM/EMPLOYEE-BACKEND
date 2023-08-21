@@ -1,7 +1,7 @@
 
 const mongoose =require("mongoose")
  //collect name , userName, password ... to create signup form 
- const signupSchema =mongoose.Schema(
+ const signupSchema = new mongoose.Schema(
   {
    fullName:{
     type:String,
@@ -13,7 +13,8 @@ const mongoose =require("mongoose")
     },
    userName:{
     type: String,
-    require
+    require,
+    unique: true
    },
    email:{
     type: String,
@@ -30,4 +31,6 @@ const mongoose =require("mongoose")
   }
 } 
  )
-  module.exports =mongoose.model("signupModel", signupSchema)
+  //module.exports =mongoose.model("signupModel", signupSchema)
+   const signupModel = mongoose.model("signupModel", signupSchema)
+   module.exports = signupModel

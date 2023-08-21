@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const signupModel = require("../models/sign-up");
 const CryptoJs = require("crypto-js");
-
+// user registration  
 router.post("/sign-up", async (req, res) => {
   const newUserSignedUp = new signupModel({
     fullName: req.body.fullName,

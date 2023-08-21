@@ -22,7 +22,8 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-
+ //useNewUrlParser: true,
+  //useUnifiedTopology: true,
 // middleware
 app.use(express.json());
 app.use(cors());
