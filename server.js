@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT =  3000;
 const employeeRouter = require("./routes/employee");
+const signupRouter =require("./routes/sign-up")
 const cors =require("cors")
 // const errorMiddleWare =require("./middleware/errorMiddleWare")
 
@@ -26,5 +27,6 @@ mongoose
 app.use(express.json());
 app.use(cors());
 app.use("/api/employees", employeeRouter);
+app.use("/api/users",signupRouter)
 // app.use(errorMiddleWare)
 
